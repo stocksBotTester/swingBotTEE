@@ -21,17 +21,17 @@ Once dependencies are installed run: ``` npm start ``` in your terminal
 
 ## Before you start
 
-###You will need two accounts:
+### You will need two accounts:
 1) Twitter Developer Account: https://developer.twitter.com/
 2) Alpaca Account: https://www.alpaca.markets
 
-###From the Twitter Developer account you will need to get:
+### From the Twitter Developer account you will need to get:
 1) consumer_api_key
 2) consumer_api_secret
 3) access_token_key
 4) access_token_secret
 
-###From the Alpaca Paper Trading Account you will need to get
+### From the Alpaca Paper Trading Account you will need to get
 1) keyId
 2) secretKey
 > **IF YOU RESET YOUR ALPACA PAPER TRADING ACCOUNT YOU WILL NEED TO RE-GENERATE YOUR KEYS OR THE APP WILL NOT WORK**
