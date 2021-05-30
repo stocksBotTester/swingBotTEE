@@ -1,0 +1,42 @@
+{
+  "name": "swingbot_tee",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "tsc -p ./ && node ./dist/index.js",
+    "develop": "tsc-watch --onSuccess \"node ./dist/index.js\" --onFailure \"echo Beep! Compilation Failed\" --compiler typescript/bin/tsc",
+    "build": "tsc -p ./"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@alpacahq/alpaca-trade-api": "^2.1.0",
+    "axios": "^0.21.1",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.3.1",
+    "helmet": "^3.21.2",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "twitter-lite": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/cookie-parser": "^1.4.1",
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.16.1",
+    "@types/express-session": "^1.15.12",
+    "@types/fs-extra": "^8.0.1",
+    "@types/helmet": "0.0.42",
+    "@types/node": "^11.9.4",
+    "bufferutil": "^4.0.1",
+    "ts-node": "^9.1.1",
+    "tsc-watch": "^1.1.39",
+    "typescript": "^4.2.4"
+  }
+}
