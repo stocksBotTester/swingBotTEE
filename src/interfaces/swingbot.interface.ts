@@ -23,9 +23,13 @@ export namespace Swingbot {
             authorizedSignalsFromUsers: string[];
         };
         alpaca: {
+            accountName: string;
             api: {
                 keyId: string;
                 secretKey: string;
+            }
+            trades: {
+                amountPerTradeInDollars: number;
             }
         };
         swingbot: {

@@ -5,9 +5,12 @@ const Alpaca = require('@alpacahq/alpaca-trade-api');
 export class AlpacaSB {
     private alpaca;
     private settings = { paper: true, usePolygon: false };
+    private amountPerTradeInDollars: number;
 
     constructor(private swingbotSettings: Swingbot.Settings) {
         this.alpaca = new Alpaca(Object.assign({}, swingbotSettings.alpaca.api, this.settings));
+        this.amountPerTradeInDollars = parseFloat(`${this.swingbotSettings.alpaca.trades.amountPerTradeInDollars ?? 0}`);
+        this.displayAccountInfo();
     }
 
     public checkAccount() {
@@ -22,8 +25,7 @@ export class AlpacaSB {
     }
 
     public buyStock(signal: Swingbot.Signal): any {
-        const amountPerTradeInDollars = 2500;
-        const quantity = parseInt(`${amountPerTradeInDollars / signal.buyPrice}`);
+        const quantity = parseInt(`${this.amountPerTradeInDollars / signal.buyPrice}`);
         const order = {
             symbol: signal.symbol.toUpperCase(),
             qty: quantity,
@@ -56,6 +58,29 @@ export class AlpacaSB {
         console.log(` ERROR BUYING '${signal.symbol}'`)
         console.log(' MESSAGE: ', e.error?.message)
         console.log('***********************************')
+    }
+
+    private displayAccountInfo() {
+        if (this.amountPerTradeInDollars <= 0) {
+            console.log('   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+            console.log('   !                                                !');
+            console.log(`   !    ALPACA: (${this.swingbotSettings.alpaca.accountName})`);
+            console.log('   !    ERROR:                                      !');
+            console.log('   !    amountPerTradeInDollars in the settings     !');
+            console.log('   !    file must be greater than zero ($0)         !');
+            console.log('   !                                                !');
+            console.log('   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+            console.log('');
+            process.exit(1);
+        } else {
+            console.log('   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+            console.log('   $                                                     $');
+            console.log(`   $    ALPACA: (${this.swingbotSettings.alpaca.accountName})`);
+            console.log(`   $    Trade amount is set to $${this.amountPerTradeInDollars} per trade`);
+            console.log('   $                                                     $');
+            console.log('   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+            console.log('');
+        }
     }
 
 }

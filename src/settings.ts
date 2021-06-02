@@ -7,7 +7,6 @@ export const swingbotSettings: Swingbot.Settings = {
             consumer_secret: '--- TWITTER CONSUMER API SECRET HERE ---',
             access_token_key: '--- TWITTER AUTHENTICATION ACCESS TOKEN KEY HERE ---',
             access_token_secret: '--- TWITTER AUTHENTICATION ACCESS TOKEN SECRET HERE --- ',
-
         },
         followUsers: [
             { name: "@r_scalp", id: "1379234944652697600" },
@@ -16,9 +15,13 @@ export const swingbotSettings: Swingbot.Settings = {
         authorizedSignalsFromUsers: ['@r_scalp', '@SwingBot_Small']
     },
     alpaca: {
+        accountName: 'Paper Account',
         api: {
             keyId: '--- ALPACA API KEY HERE ---',
             secretKey: '--- ALPACA SECRET KEY HERE ---',
+        },
+        trades: {
+            amountPerTradeInDollars: 2500
         }
     },
     swingbot: {

@@ -4,6 +4,9 @@ import { AlpacaSB } from "./engine/alpaca";
 import { SwingbotUtils } from "./engine/swingbot";
 import { testTweet } from "./engine/testing";
 
+
+SwingbotUtils.logWelcomeMessage();
+
 // create new instance of Twitter Client for the Swing Bot
 const twitterSB = new TwitterSB(swingbotSettings);
 
@@ -36,7 +39,6 @@ function onTweetReceived(tweet) {
     }
 }
 
-SwingbotUtils.logWelcomeMessage();
 twitterSB.startListening((tweet) => onTweetReceived(tweet))
 
 
